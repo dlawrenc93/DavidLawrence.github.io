@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Tree Canopy In Philadelphia</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<!-- <a href="index.html" class="logo">Massively</a> -->
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Projects</a></li>
+							<!-- <li class="active"><a href="generic.html">Generic Page</a></li>
+							<li><a href="elements.html">Elements Reference</a></li> -->
+						</ul>
+						<!-- <ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul> -->
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<!-- <span class="date">April 25, 2017</span> -->
+									<h1>Tree Canopy in Philadelphia</h1>
+								
+									<!-- <p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
+									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
+									amet nullam sed etiam veroeros.</p> -->
+								</header>
+
+                                <p>Tree Canopy is the land area covered by trees from a bird’s eye view. Tree canopy is an important factor in mitigating the Urban Heat Island effect, in which cities tend to be hotter than rural areas due to    buildings and impervious surfaces (e.g. concrete, asphalt) absorbing heat and radiating it back into the environment, as well as heat released by appliances, cars, etc. Trees block a large portion of solar radiation and cool the surrounding air through the process of evapotranspiration.</p>
+
+								<p>I identified areas of Philadelphia that would benefit the most from increased tree canopy by combining 4 factors:</p>
+								<ul>
+									<li>Tree canopy (2018): Areas with less tree canopy tend to be hotter</li>
+									<li>Tree canopy change (2008-2018): Areas that have lost a lot of tree cover </li>
+									<li>Land surface temperature: areas with a higher temperature have a greater need for the benefits of tree canopy</li>
+									<li>Population Density: Planting trees in densely populated areas maximizes the number of people who benefit</li>
+								</ul>
+
+								<h2>Tree Canopy</h2>
+								<p>I used tree canopy data and census block group boundaries from Open Data Philly. The tree canopy data are polygons representing tree canopy gained or lost from 2008 to 2018, as well as areas with no change. To obtain the total tree canopy for each block group, I calculated the percentage of each block group taken up by the "gain" and "no change" polygons.</p>
+								<div class="image main"><img src="images/tree_canopy_example.png" alt="" /></div>
+								<h2>Tree Canopy Change</h2>
+								<p>By subtracting the area of lost tree canopy from the gained in each block group, I found the net tree canopy change from 2008 to 2018, as a percentage of total area of the block group; in order to identify the highest-priority areas, I only used block groups with a net tree canopy loss when calculating the composite score.</p>
+								<h2>Land Surface Temperature</h2>
+								<p>For this factor, I downloaded Landsat 8 satellite raster data from 9/8/2020 from NASA Earth Explorer. Starting with the Landsat bands 4 (red), 5 (near infrared), and 10 (thermal infrared), I used R to calculate land surface temperature with <a href="https://www.hindawi.com/journals/js/2016/1480307/" target="_blank" >this procedure</a>.</p>
+								<div class="image main"><img src="images/tree_canopy_raster_workflow.png" alt="" /></div>
+								<h2>Population Density</h2>
+								<p>To find population density, I divided the total population of each block group by its area.</p>
+								<h2>Tree Canopy Need Index</h2>
+								<p> I calculated the final Tree canopy need index by:</p>
+				
+								<ul>
+									<li>Selecting only the block groups with net tree canopy loss</li>
+									<li>Reversing the scores for tree canopy and tree canopy change so that lower percentages in these factors result in a higher tree canopy need score</li>
+									<li>Standardizing each factor to a 0-1 scale</li>
+									<li>Calculating the average of the 4 factors to obtain the final index score for each block group</li>
+								</ul>
+								
+								<h3>Factor Scores</h3>
+								<div class="image main"><img src="images/4_factors.png" alt="" /></div>
+								
+								
+								
+								<h3>Final Index</h3>
+								<div class="image main"><img src="images/tree_canopy_score.png" alt="" /></div>
+                                <!-- <p>View the map in PDF form <a href="images/DLawrence_River_Trail_Map.pdf">here</a>.</p> -->
+
+                                <!-- <object data="images/DLawrence_River_Trail_Map.pdf" type="application/pdf" width="100%" height="500px">
+                                    <p>Unable to display PDF file. <a href="images/DLawrence_River_Trail_Map.pdf">Download</a> instead.</p>
+                                  </object> -->
+
+								<!-- <p>Description of this map.</p> -->
+								
+							</section>
+
+					</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
